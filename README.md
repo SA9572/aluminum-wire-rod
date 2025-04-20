@@ -10,20 +10,20 @@ A machine learning project to predict tensile strength and elongation of aluminu
 - **Next Steps**: Preprocessing and feature engineering.
 
 # aluminum-wire-rod/
-# ├── app.py                 # Flask application
-# ├── train_model.py         # Script to train and save the ML model
-# ├── model.pkl              # Saved ML model
-# ├── predictions.db         # SQLite database
-# ├── requirements.txt       # Python dependencies
-# ├── templates/             # HTML templates
-# │   ├── home.html
-# │   ├── aboutus.html
-# │   ├── Application.html
-# │   ├── product.html
-# │   ├── blog.html
-# │   ├── Prediction.html
-# │   └── logs.html
-# ├── static/                # Static files (CSS, JS, images)
-# │   └── image/
-# └── README.md              # Project documentation
-  
+#├── app.py                 # Flask application
+#├── train_model.py         # Script to train and save the ML model
+#├── model.pkl              # Saved ML model
+#├── predictions.db         # SQLite database
+#├── requirements.txt       # Python dependencies
+#├── templates/             # HTML templates
+#│   ├── home.html
+#│   ├── aboutus.html
+#│   ├── Application.html
+#│   ├── product.html
+#│   ├── blog.html
+#│   ├── Prediction.html
+#│   └── logs.html
+#├── static/                # Static files (CSS, JS, images)
+#│   └── image/
+#└── README.md              # Project documentation
+ 
