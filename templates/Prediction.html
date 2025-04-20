@@ -1,0 +1,480 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALUMINA - Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <section class="py-16 px-4 max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4 text-center">Aluminum Quality Prediction</h1>
+    <p class="text-center mb-8">Enter mechanical properties to predict quality classification.</p>
+
+    <!-- ✅ Form starts here --
+    <form id="predictionForm" action="/Prediction" method="POST" class="space-y-4 bg-gray-800 p-6 rounded-lg">
+      <div>
+        <label class="block mb-1">Tensile Strength (MPa)</label>
+        <input type="number" step="any" name="tensile_strength" required class="w-full px-4 py-2 rounded bg-gray-700 text-white"/>
+      </div>
+      <div>
+        <label class="block mb-1">Proof Stress (MPa)</label>
+        <input type="number" step="any" name="proof_stress" required class="w-full px-4 py-2 rounded bg-gray-700 text-white"/>
+      </div>
+      <div>
+        <label class="block mb-1">Elongation (%)</label>
+        <input type="number" step="any" name="elongation" required class="w-full px-4 py-2 rounded bg-gray-700 text-white"/>
+      </div>
+      <button type="submit" class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-gray-900 font-bold py-2 rounded hover:from-green-500 hover:to-blue-600">
+        Predict
+      </button>
+    </form>
+
+    <!-- ✅ Result output goes here --
+    <div id="result" class="mt-6 text-center"></div>
+  </section>
+
+  <!-- ✅ Script to handle AJAX prediction request --
+  <script>
+    document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const resultDiv = document.getElementById('result');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-gray-800 rounded-md">
+              <h2 class="text-lg font-semibold mb-2">Prediction Result</h2>
+              <p><strong>Result:</strong> ${data.result}</p>
+              <p><strong>Confidence:</strong> ${data.confidence}</p>
+              <p><strong>Suggestion:</strong> ${data.suggestion}</p>
+              <p><strong>Tensile Strength:</strong> ${data.tensile_strength}</p>
+              <p><strong>Proof Stress:</strong> ${data.proof_stress}</p>
+              <p><strong>Elongation:</strong> ${data.elongation}</p>
+            </div>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-red-700 rounded-md">
+              <p><strong>Error:</strong> ${data.error || "Prediction failed. Try again."}</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `
+          <div class="p-4 bg-red-700 rounded-md">
+            <p><strong>Error:</strong> Could not reach server. Try again.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALUMINA - Prediction</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s forwards;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Header --
+  <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md transition-all duration-500" id="header">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+        <span class="text-2xl font-bold tracking-tighter">SAJ Private Limited</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/home" class="nav-link text-sm font-medium tracking-wide py-1">Home</a>
+        <a href="/Application" class="nav-link text-sm font-medium tracking-wide py-1">Application</a>
+        <a href="/product" class="nav-link text-sm font-medium tracking-wide py-1">Products</a>
+        <a href="/blog" class="nav-link text-sm font-medium tracking-wide py-1">Blog</a>
+        <a href="/aboutus" class="nav-link text-sm font-medium tracking-wide py-1">About Us</a>
+        <a href="/Prediction" class="nav-link text-sm font-medium tracking-wide py-1">Prediction</a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section --
+  <section class="relative h-96">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+      <div 
+      style="background-image: url(/static/image/Blog\ Background\ Image.jpg)"
+        class="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+      ></div>
+    </div>
+    
+    <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter mb-6 animate-slide-up">
+        Aluminum Quality Prediction
+      </h1>
+      <p class="text-lg md:text-xl max-w-lg mx-auto mb-8 opacity-90 animate-slide-up animation-delay-300">
+        Use our ML model to predict the suitability of aluminum based on its mechanical properties.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Prediction Form Section --
+  <section class="py-24 bg-gray-800 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Enter Aluminum Properties</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80">
+          Input the tensile strength, proof stress, and elongation to get a prediction on industry suitability.
+        </p>
+      </div>
+      
+      <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
+        <form id="predictionForm" action="/Prediction" method="POST">
+          <div class="mb-4">
+            <label for="tensile_strength" class="block text-sm font-medium mb-2">Tensile Strength (MPa)</label>
+            <input type="number" id="tensile_strength" name="tensile_strength" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <div class="mb-4">
+            <label for="proof_stress" class="block text-sm font-medium mb-2">Proof Stress (MPa)</label>
+            <input type="number" id="proof_stress" name="proof_stress" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <div class="mb-6">
+            <label for="elongation" class="block text-sm font-medium mb-2">Elongation (%)</label>
+            <input type="number" id="elongation" name="elongation" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <button type="submit"
+                  class="w-full px-4 py-2 bg-gradient-to-r from-gray-300 to-gray-500 text-gray-900 font-semibold rounded-md hover:from-gray-400 hover:to-gray-600 transition-all duration-300">
+            Predict
+          </button>
+        </form>
+        <div id="result" class="mt-6 text-center"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer --
+  <footer class="bg-black py-12 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+            <span class="text-2xl font-bold tracking-tighter">SAJ Pvt Ltd</span>
+          </div>
+          <p class="text-gray-400">Setting the global standard for premium aluminum solutions.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Solutions</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Sustainability</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-gray-400">Email: <a href="mailto:info@alumina.com" class="hover:text-gray-200">info@alumina.com</a></p>
+          <p class="text-gray-400">Phone: +1 (800) 555-1234</p>
+          <p class="text-gray-400">Address: 123 Industry Lane, Tech City</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p class="text-gray-400">© 2025 ALUMINA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Form Submission --
+  <script>
+    document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+        
+        const resultDiv = document.getElementById('result');
+        if (response.ok) {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-gray-800 rounded-md">
+              <h3 class="text-lg font-semibold mb-2">Prediction Result</h3>
+              <p><strong>Result:</strong> ${result.result}</p>
+              <p><strong>Confidence:</strong> ${result.confidence}</p>
+              <p><strong>Suggestion:</strong> ${result.suggestion}</p>
+              <p><strong>Tensile Strength:</strong> ${result.tensile_strength} MPa</p>
+              <p><strong>Proof Stress:</strong> ${result.proof_stress} MPa</p>
+              <p><strong>Elongation:</strong> ${result.elongation} %</p>
+            </div>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-red-800 rounded-md">
+              <p><strong>Error:</strong> ${result.error}</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        document.getElementById('result').innerHTML = `
+          <div class="p-4 bg-red-800 rounded-md">
+            <p><strong>Error:</strong> Failed to get prediction. Please try again.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALUMINA - Prediction</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s forwards;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md transition-all duration-500" id="header">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+        <span class="text-2xl font-bold tracking-tighter">SAJ Private Limited</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/home" class="nav-link text-sm font-medium tracking-wide py-1">Home</a>
+        <a href="/Application" class="nav-link text-sm font-medium tracking-wide py-1">Application</a>
+        <a href="/product" class="nav-link text-sm font-medium tracking-wide py-1">Products</a>
+        <a href="/blog" class="nav-link text-sm font-medium tracking-wide py-1">Blog</a>
+        <a href="/aboutus" class="nav-link text-sm font-medium tracking-wide py-1">About Us</a>
+        <a href="/Prediction" class="nav-link text-sm font-medium tracking-wide py-1">Prediction</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <!-- Hero Section -->
+  <section class="relative h-96">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+      <div 
+        style="background-image: url(/static/image/pridiction\ background.jpeg)"
+        class="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+      ></div>
+    </div>
+    
+    <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter mb-6 animate-slide-up">
+        Aluminum Quality Prediction
+      </h1>
+      <p class="text-lg md:text-xl max-w-lg mx-auto mb-8 opacity-90 animate-slide-up animation-delay-300">
+        Use our ML model to predict the suitability of aluminum based on its mechanical properties.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Prediction Form Section -->
+<section class="py-24 bg-gray-800 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Enter Aluminum Properties</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80">
+          Input the tensile strength, proof stress, and elongation to get a prediction on industry suitability.
+        </p>
+      </div>
+  
+      <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
+        <form id="predictionForm" action="/Prediction" method="POST">
+          <div class="mb-4">
+            <label for="tensile_strength" class="block text-sm font-medium mb-2">Tensile Strength (MPa)</label>
+            <input type="number" id="tensile_strength" name="tensile_strength" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <div class="mb-4">
+            <label for="proof_stress" class="block text-sm font-medium mb-2">Proof Stress (MPa)</label>
+            <input type="number" id="proof_stress" name="proof_stress" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <div class="mb-6">
+            <label for="elongation" class="block text-sm font-medium mb-2">Elongation (%)</label>
+            <input type="number" id="elongation" name="elongation" step="any" required
+                   class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          </div>
+          <button type="submit"
+                  class="w-full px-4 py-2 bg-gradient-to-r from-gray-300 to-gray-500 text-gray-900 font-semibold rounded-md hover:from-gray-400 hover:to-gray-600 transition-all duration-300">
+            Predict
+          </button>
+        </form>
+  
+        <div id="result" class="mt-6 text-center"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- JavaScript to handle form submission and prediction -->
+  <script>
+    document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const form = e.target;
+      const formData = new FormData(form);
+  
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+  
+        const result = await response.json();
+        const resultDiv = document.getElementById('result');
+  
+        if (response.ok && result.success) {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-gray-800 rounded-md">
+              <h3 class="text-lg font-semibold mb-2">Prediction Result</h3>
+              <p><strong>Result:</strong> ${result.result}</p>
+              <p><strong>Confidence:</strong> ${result.confidence}</p>
+              <p><strong>Suggestion:</strong> ${result.suggestion}</p>
+              <p><strong>Tensile Strength:</strong> ${result.tensile_strength} MPa</p>
+              <p><strong>Proof Stress:</strong> ${result.proof_stress} MPa</p>
+              <p><strong>Elongation:</strong> ${result.elongation} %</p>
+            </div>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="p-4 bg-red-800 rounded-md">
+              <p><strong>Error:</strong> ${result.error || 'Prediction failed. Try again.'}</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        document.getElementById('result').innerHTML = `
+          <div class="p-4 bg-red-800 rounded-md">
+            <p><strong>Error:</strong> Failed to connect to server. Please try again.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+  

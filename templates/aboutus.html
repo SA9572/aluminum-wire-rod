@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAJ Private Limited  - About Us</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slowZoom {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s forwards;
+    }
+
+    .animate-slow-zoom {
+      animation: slowZoom 10s infinite alternate;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .animation-delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .animation-delay-900 {
+      animation-delay: 0.9s;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280;
+    }
+
+    /* Smooth transitions */
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    /* Navbar link hover effect */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Value card hover effect */
+    .value-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .value-card-img {
+      transition: transform 0.7s ease;
+    }
+
+    .value-card:hover .value-card-img {
+      transform: scale(1.1);
+    }
+
+    /* Team circle hover effect */
+    .team-circle {
+      transition: transform 0.4s ease;
+    }
+
+    .team-circle:hover {
+      transform: translateY(-8px);
+    }
+
+    .team-circle-img {
+      transition: transform 0.7s ease, box-shadow 0.4s ease;
+    }
+
+    .team-circle:hover .team-circle-img {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .team-circle-frame {
+      border: 3px solid transparent;
+      background: linear-gradient(45deg, #4b5563, #9ca3af) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md transition-all duration-500" id="header">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+        <span class="text-2xl font-bold tracking-tighter">SAJ Private Limited</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/home" class="nav-link text-sm font-medium tracking-wide py-1">Home</a>
+        <a href="/Application" class="nav-link text-sm font-medium tracking-wide py-1">Application</a>
+        <a href="/product" class="nav-link text-sm font-medium tracking-wide py-1">Products</a>
+        <a href="/blog" class="nav-link text-sm font-medium tracking-wide py-1">Blog</a>
+        <a href="/aboutus" class="nav-link text-sm font-medium tracking-wide py-1">About Us</a>
+        <a href="/Prediction" class="nav-link text-sm font-medium tracking-wide py-1">Prediction</a>
+      </div>
+    </div>
+    
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="relative h-96">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+      <div 
+        style="background-image: url(/static/image/aboutus1.jpg)"
+        class="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+      ></div>
+    </div>
+    
+    <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter mb-6 animate-slide-up">
+        About SAJ Pvt. Ltd.
+      </h1>
+      <p class="text-lg md:text-xl max-w-lg mx-auto mb-8 opacity-90 animate-slide-up animation-delay-300">
+        Pioneering premium aluminum solutions with innovation, sustainability, and precision.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Our Mission Section -->
+  <section class="py-24 bg-gray-800 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80">
+          At SAJ, we are committed to redefining the aluminum industry by delivering high-performance, sustainable, and precision-engineered solutions that empower our clients to build a better future.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Values Section -->
+  <section class="py-24 bg-gray-900 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Values</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80">
+          The principles that guide our work and define our commitment to excellence.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Value Card 1 -->
+        <div class="value-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/aboutus2.jpg)"
+              class="value-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Innovation</h3>
+            <p class="text-gray-300">
+              Pushing the boundaries of aluminum technology through cutting-edge research and development.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Value Card 2 -->
+        <div class="value-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/aboutus3.jpg)"
+              class="value-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Sustainability</h3>
+            <p class="text-gray-300">
+              Committing to eco-friendly practices with 100% recyclable products and renewable energy.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Value Card 3 -->
+        <div class="value-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/aboutus4.jpg)"
+              class="value-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Precision</h3>
+            <p class="text-gray-300">
+              Delivering products with unmatched accuracy and quality through advanced engineering.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Value Card 4 -->
+        <div class="value-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/aboutus5.webp)"
+              class="value-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Collaboration</h3>
+            <p class="text-gray-300">
+              Partnering with clients to create tailored solutions that meet their unique needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Team Section -->
+  <section class="py-24 bg-gray-800 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Meet Our Teammates</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80">
+          Our team of innovators and experts drives ALUMINA's mission to lead the aluminum industry.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Team Member 1 -->
+        <div class="team-circle text-center">
+          <div class="relative h-56 w-56 mx-auto mb-6 overflow-hidden rounded-full border-4 border-gray-200">
+            <img 
+              src="/static/image/Saurabh Pic For Web-modified (1).png" 
+              alt="Dr. Emily Carter" 
+              class="h-full w-full object-cover object-center"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Saurabh Kumar</h3>
+          <p class="text-gray-400 mb-3">Computer Science Engineering</p>
+          <p class="text-gray-300 max-w-xs mx-auto">
+            Saurabh leads our research and development team, focusing on innovative aluminum solutions that set industry standards & 
+          </p>
+        </div>
+        
+        <!-- Team Member 2 -->
+        <div class="team-circle text-center">
+          <div class="relative h-56 w-56 mx-auto mb-6 overflow-hidden rounded-full border-4 border-gray-200">
+            <img 
+              src="/static/image/Abhishek.jpg" 
+              alt="James Patel" 
+              class="h-full w-full object-cover object-center"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Abhishek Gupta</h3>
+          <p class="text-gray-400 mb-3">Computer Science Engineeringy</p>
+          <p class="text-gray-300 max-w-xs mx-auto">
+            Abhishek is our sustainability Member, ensuring that all our processes are environmentally friendly and efficient.
+          </p>
+        </div>
+        
+        <!-- Team Member 3 -->
+        <div class="team-circle text-center">
+          <div class="relative h-56 w-56 mx-auto mb-6 overflow-hidden rounded-full border-4 border-gray-200">
+            <img 
+              src="/static/image/Team Mate3.jpg" 
+              alt="Sarah Nguyen" 
+              class="h-full w-full object-cover object-center"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Jaideep Rajput</h3>
+          <p class="text-gray-400 mb-3">Computer Science Engineering</p>
+          <p class="text-gray-300 max-w-xs mx-auto">
+            Jaideep is our quality assurance expert, ensuring that all products meet the highest standards of excellence.
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-black py-12 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+            <span class="text-2xl font-bold tracking-tighter">SAJ Pvt. Ltd.</span>
+          </div>
+          <p class="text-gray-400">Setting the global standard for premium aluminum solutions.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Solutions</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Sustainability</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-gray-400">Email: ssaurabhkumar061@gmail.com</p>
+          <p class="text-gray-400">Phone: +1 (800) 555-1234</p>
+          <p class="text-gray-400">Address: 123 Industry Lane, Tech City</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p class="text-gray-400">© 2025 SAJ Private Limited. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Mobile Menu -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

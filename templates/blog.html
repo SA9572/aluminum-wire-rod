@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALUMINIUM SAJ - Blog</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slowZoom {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s forwards;
+    }
+
+    .animate-slow-zoom {
+      animation: slowZoom 10s infinite alternate;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .animation-delay-600 {
+      animation-delay: 0.6s;
+    }
+
+    .animation-delay-900 {
+      animation-delay: 0.9s;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280;
+    }
+
+    /* Smooth transitions */
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    /* Navbar link hover effect */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Blog card hover effect */
+    .blog-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-card-img {
+      transition: transform 0.7s ease;
+    }
+
+    .blog-card:hover .blog-card-img {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md transition-all duration-500" id="header">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+        <span class="text-2xl font-bold tracking-tighter">SAJ Private Limited</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/home" class="nav-link text-sm font-medium tracking-wide py-1">Home</a>
+        <a href="/Application" class="nav-link text-sm font-medium tracking-wide py-1">Application</a>
+        <a href="/product" class="nav-link text-sm font-medium tracking-wide py-1">Products</a>
+        <a href="/blog" class="nav-link text-sm font-medium tracking-wide py-1">Blog</a>
+        <a href="/aboutus" class="nav-link text-sm font-medium tracking-wide py-1">About Us</a>
+        <a href="/Prediction" class="nav-link text-sm font-medium tracking-wide py-1">Prediction</a>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="relative h-96">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+      <div 
+        style="background-image: url(/static/image/Blog\ Background\ Image.jpg)"
+        class="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+      ></div>
+    </div>
+    
+    <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight  tracking-tighter mb-6 animate-slide-up">
+        ALUMINIUM Insights
+      </h1>
+      <p class="text-lg md:text-xl max-w-lg mx-auto mb-8 opacity-90 animate-slide-up animation-delay-300">
+        Stay informed with the latest trends, innovations, and insights in the aluminum industry.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Blog Filters and Grid -->
+  <section class="py-24 bg-gray-800 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+        <div class="w-full md:w-1/3">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search blog posts..." 
+              class="w-full px-4 py-2 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+            >
+            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <button class="filter-btn px-4 py-2 bg-gray-700 text-gray-200 font-semibold rounded-md hover:bg-gray-600 transition-all duration-300" data-category="all">All</button>
+          <button class="filter-btn px-4 py-2 bg-gray-700 text-gray-200 font-semibold rounded-md hover:bg-gray-600 transition-all duration-300" data-category="industry">Industry Trends</button>
+          <button class="filter-btn px-4 py-2 bg-gray-700 text-gray-200 font-semibold rounded-md hover:bg-gray-600 transition-all duration-300" data-category="sustainability">Sustainability</button>
+          <button class="filter-btn px-4 py-2 bg-gray-700 text-gray-200 font-semibold rounded-md hover:bg-gray-600 transition-all duration-300" data-category="innovation">Innovation</button>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGrid">
+        <!-- Blog Card 1 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="industry">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Aerospacee.jpg)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">December 15, 2024</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">The Future of Aluminum in Aerospace</h3>
+            <p class="text-gray-300 mb-4">Exploring how advanced aluminum alloys are shaping the next generation of aircraft.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 2 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="sustainability">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/green.webp)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">September 20, 2024</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Sustainable Aluminum: A Greener Future</h3>
+            <p class="text-gray-300 mb-4">How ALUMINA's renewable energy practices are reducing environmental impact.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 3 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="innovation">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Precision\ Engineering.jpg)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">August 10, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Precision Engineering Breakthroughs</h3>
+            <p class="text-gray-300 mb-4">Discover the latest advancements in CNC machining for aluminum products.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 4 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="industry">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Aluminum\ in\ Modern.jpg)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">July 5, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Aluminum in Modern Architecture</h3>
+            <p class="text-gray-300 mb-4">How aluminum facades are transforming urban skylines worldwide.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 5 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="sustainability">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/open-VS-closed-loop-recycling-1.webp)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">June 15, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Closed-Loop Recycling Systems</h3>
+            <p class="text-gray-300 mb-4">Our approach to 100% recyclable aluminum production.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 6 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="innovation">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Next-Gen\ Alloy\ Development.png)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">May 25, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Next-Gen Alloy Development</h3>
+            <p class="text-gray-300 mb-4">Unveiling our latest proprietary alloys for extreme conditions.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+<!-- Blog Card 7 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="innovation">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Nano-Coated\ Aluminum\ Surfaces.jpeg)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">February 18, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3"> Nano-Coated Aluminum Surfaces</h3>
+            <p class="text-gray-300 mb-4">Revolutionizing protection with advanced surface engineering.
+              New nano-coating technologies enhance aluminum’s durability, UV resistance, and antibacterial properties—ideal for medical, marine, and food-grade applications.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+<!-- Blog Card 8 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="innovation">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Heat-Tolerant\ Alloys\ for\ Extreme\ Environments.jpg)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">May 25, 2024</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Heat-Tolerant Alloys for Extreme Environments</h3>
+            <p class="text-gray-300 mb-4">Aluminum solutions designed for high-temperature industrial applications.
+              Withstanding over 600°C, our proprietary alloys are engineered for performance in aerospace engines, automotive parts, and industrial machinery.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+
+
+<!-- Blog Card 9 -->
+        <div class="blog-card rounded-lg overflow-hidden bg-gray-900 shadow-lg" data-category="innovation">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url(/static/image/Lightweight\ Transport\ Solutions.webp)"
+              class="blog-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-400">March 2, 2025</span>
+            <h3 class="text-xl font-semibold mt-2 mb-3">Lightweight Transport Solutions</h3>
+            <p class="text-gray-300 mb-4">Using aluminum to reduce vehicle weight and increase efficiency.
+              Automotive and railway industries are adopting aluminum for frames, panels, and wiring — cutting fuel consumption without compromising strength.</p>
+            <a href="#" class="text-gray-200 font-semibold hover:text-gray-400 transition-all duration-300 flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-black py-12 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+            <span class="text-2xl font-bold tracking-tighter">ALUMINA</span>
+          </div>
+          <p class="text-gray-400">Setting the global standard for premium aluminum solutions.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Solutions</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Sustainability</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-gray-400">Email: ssaurabhkumar061@gmail.com</p>
+          <p class="text-gray-400">Phone: +91 7294018224</p>
+          <p class="text-gray-400">Address: 123 Industry Lane, Tech City</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p class="text-gray-400">© 2025 ALUMINA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Filtering and Search -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const searchInput = document.getElementById('searchInput');
+
+    // Filter by category
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Update active button state
+        filterButtons.forEach(btn => btn.classList.remove('bg-gray-600'));
+        button.classList.add('bg-gray-600');
+        
+        // Filter blog posts
+        blogCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+            card.classList.add('animate-slide-up');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      
+      blogCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(query) || description.includes(query)) {
+          card.style.display = 'block';
+          card.classList.add('animate-slide-up');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

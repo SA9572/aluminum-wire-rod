@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications - SAJ Private Limited</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s forwards;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+
+    .feature-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card-img {
+      transition: transform 0.7s ease;
+    }
+
+    .feature-card:hover .feature-card-img {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md transition-all duration-500" id="header">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+        <span class="text-2xl font-bold tracking-tighter">SAJ Private Limited</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/home" class="nav-link text-sm font-medium tracking-wide py-1">Home</a>
+        <a href="/Application" class="nav-link text-sm font-medium tracking-wide py-1">Application</a>
+        <a href="/product" class="nav-link text-sm font-medium tracking-wide py-1">Products</a>
+        <a href="/blog" class="nav-link text-sm font-medium tracking-wide py-1">Blog</a>
+        <a href="/aboutus" class="nav-link text-sm font-medium tracking-wide py-1">About Us</a>
+        <a href="/Prediction" class="nav-link text-sm font-medium tracking-wide py-1">Prediction</a>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+  </header>
+
+  <section class="relative h-96">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+      <div 
+        style="background-image: url(static/image/ababahd.jpg)"
+        class="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+      ></div>
+    </div>
+    
+    <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter mb-6 animate-slide-up">
+        Applications of Our Aluminum Solutions  
+      </h1>
+      <p class="text-lg md:text-xl max-w-lg mx-auto mb-8 opacity-90 animate-slide-up animation-delay-300">
+        Our premium aluminum products are engineered for a wide range of industries, delivering unmatched performance and reliability.
+      </p>
+    </div>
+  </section>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Applications Section -->
+  <section class="py-24 bg-gray-900 transition-all duration-500" id="applicationsSection">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-slide-up">Aluminum at Work: Real-World Applications</h2>
+        <p class="max-w-3xl mx-auto text-lg opacity-80 animate-slide-up animation-delay-300">
+            From architecture to electronics, our aluminum solutions power innovation across industries.
+            Engineered for performance, built for reliability, and trusted in the real world.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> 
+        <!-- Application Card 1 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('static/image/Application1.jpg')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with aerospace-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Rail & Transportation</h3>
+            <p class="text-gray-300">
+                Lightweight aluminum components used in trains and metro systems reduce energy consumption while improving speed and passenger comfort.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Application Card 2 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('static/image/Application2.jpg')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with automotive-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Consumer Goods</h3>
+            <p class="text-gray-300">
+                Sleek and durable aluminum is used in everyday products like kitchen appliances, furniture, and sports equipment—offering modern design and resilience.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Application Card 3 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('static/image/Application3.png')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with construction-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Packaging</h3>
+            <p class="text-gray-300">
+                Eco-friendly aluminum packaging solutions for food, beverages, and pharmaceuticals ensure product protection while supporting recyclability and sustainability.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Application Card 4 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('static/image/Application4.jpg')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with marine-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Defense & Security</h3>
+            <p class="text-gray-300">
+                Robust and adaptable aluminum materials are ideal for military vehicles, mobile shelters, and protective barriers—providing strength without added weight.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Application Card 5 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('static/image/Application5.jpg')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with electronics-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Lighting & Interior Design</h3>
+            <p class="text-gray-300">
+                Aluminum's reflective and aesthetic properties make it perfect for lighting fixtures, decorative panels, and custom interiors that blend form and function.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Application Card 6 -->
+        <div class="feature-card rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+          <div class="relative h-48 overflow-hidden">
+            <div 
+              style="background-image: url('/static/image/Application6.avif')" 
+              class="feature-card-img absolute inset-0 bg-cover bg-center"
+            ></div>
+            <!-- TODO: Replace with renewable energy-specific image -->
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3">Machinery & Equipment</h3>
+            <p class="text-gray-300">
+                Precision aluminum parts improve the efficiency and longevity of industrial machines, reducing wear and increasing operational reliability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 transition-all duration-500">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-md"></div>
+            <span class="text-2xl font-bold tracking-tighter">ALUMINA</span>
+          </div>
+          <p class="text-gray-400">Setting the global standard for premium aluminum solutions.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Solutions</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Sustainability</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gray-200 transition-all duration-300">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-gray-400">Email: info@alumina.com</p>
+          <p class="text-gray-400">Phone: +1 (800) 555-1234</p>
+          <p class="text-gray-400">Address: 123 Industry Lane, Tech City</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p class="text-gray-400">© 2025 ALUMINA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
